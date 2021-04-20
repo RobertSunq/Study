@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <!-- 注意：再compile子模块之前，先对父工程进行 install，否则会导致子模块再引用父项目的pom文件时出现报错-->
     <!--公司或者组织的唯一标志，通常使用全限定的包名区分该项目和其他项目。并且构建时生成的路径也是由此生成-->
     <groupId>com.qing</groupId>
     <!--本项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的-->
