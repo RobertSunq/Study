@@ -1,0 +1,30 @@
+###################  spring配置  ###################
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource        #当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver            #mysql驱动包
+    url: jdbc:mysql://localhost:3306/springcloud_dev?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: springcloud
+    password: 123456
+    # 创建数据库：create database springcloud_dev DEFAULT CHARACTER SET utf8;
+    # 创建新用户：create user 'springcloud' identified by '123456';
+    # 赋予该用户对该数据库的所有权限，并刷新：grant all on springcloud_dev.* to 'springcloud';flush privileges;
+    # 新建数据库并直接赋予权限：
+                        # grant all on springcloud_dev.* TO 'springcloud'@'%' IDENTIFIED BY '123456'; flush privileges;
+
+###################  日志配置  ###################
+logging:
+  # TRANCE < DEBUG < INFO < WARN < ERROR < FATAL < OFF
+  level:
+    com.qing: debug
+    org.springframework: warn
+
+
+
+
+
+
+
+
+
+

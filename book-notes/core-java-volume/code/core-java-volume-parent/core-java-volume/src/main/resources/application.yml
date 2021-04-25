@@ -1,0 +1,71 @@
+
+###################  web配置  ###################
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /api
+  port: 18001
+
+
+###################  spring配置  ###################
+spring:
+  application:
+    name: core-java-vloume
+  profiles:
+    # 对应application-{profiles}.yml 文件，可指定多个用,分割
+    active: dev
+
+###################  mybatis配置  ###################
+mybatis-plus:
+  # MyBatis Mapper 所对应的XML文件位置  默认位置：classpath*:/mapper/**/*.xml
+  mapper-locations: classpath*:**/mapper/xml/**Mapper.xml
+  #MyBaits 别名包扫描路径，通过该属性可以给包中的类注册别名，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.qing.**.entity
+  global-config:
+    # 全局策略中的 DB 策略配置
+    db-config:
+      # 默认主键类型
+      id-type: ASSIGN_UUID
+      # 默认表前缀
+      tablePrefix: null
+     # 是否控制台 print mybatis-plus 的 LOGO
+    banner: true
+
+  # 本部分（Configuration）的配置大都为 MyBatis 原生支持的配置，可以通过 MyBatis XML配置文件的形式进行配置
+  configuration:
+    # 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射
+    # 如果数据库命名符合规则，则在实体中无需使用 @TableField 注解指定数据库字段名
+    map-underscore-to-camel-case: true
+    # 配置的缓存的全局开关
+    cache-enabled: true
+    # 延时加载的开关
+    lazyLoadingEnabled: true
+    # 开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+    multipleResultSetsEnabled: true
+    # 是否将sql打印到控制面板(会将sql语句和查询的结果都打印到控制台)
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # MyBatis 自动映射策略，通过该配置可指定 MyBatis 是否并且如何来自动映射数据表字段与对象的属性
+    auto-mapping-behavior: partial  # NONE:不启用自动映射，PARTIAL:只对非嵌套的 resultMap 进行自动映射，FULL:对所有的 resultMap 都进行自动映射
+    # 映射时未知列或未知属性处理策略
+    autoMappingUnknownColumnBehavior: none # NONE：不做任何处理 (默认值),WARNING：以日志的形式打印相关警告信息,FAILING：当作映射失败处理，并抛出异常和详细信息
+    # 一级缓存，默认为 SESSION (特别注意：微服务架构中需要关闭一级缓存，否则会产生脏数据)
+    localCacheScope: SESSION # session级别缓存，同一个session相同查询语句不会再次查询数据库,STATEMENT 关闭一级缓存
+    # 二级缓存
+#    cacheEnabled: true
+
+  # 启动时是否检查 MyBatis XML 文件的存在，默认不检查
+  check-config-location: false
+  # MyBatis 配置文件位置，如果您有单独的 MyBatis 配置，请将其路径配置到 configLocation 中.MyBatisConfiguration
+  # configLocation:
+
+
+
+
+
+
+
+
+
+
+
