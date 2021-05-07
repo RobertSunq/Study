@@ -154,7 +154,7 @@ This is an H2
 1. 第一
 2. 第二
 	+ a
-3\. 反斜杠避免被识别为有序列表
+	3\. 反斜杠避免被识别为有序列表
 3. 第三
 
 ```markdown
@@ -376,12 +376,81 @@ _   底线
 
 #### 注脚
 
-
+[^注脚]: https://www.appinn.com/markdown/
 
 ```markdown
 与行内式的超链接相似,只是在`[]`中添加 `^`
 [^注脚]: https://www.appinn.com/markdown/
 ```
+
+
+
+#### 链接文件
+
+[绝对地址文件](E:/Study/studyNote/Study/other-notes/git-nodes.md)
+[相对地址文件](git-nodes.md)
+
+```markdown
+链接文件与超链接语法类似，
+[绝对地址文件](E:/Study/studyNote/Study/other-notes/git-nodes.md)
+[相对地址文件](git-nodes.md)
+```
+
+#### 流程图
+
+```mermaid
+graph LR
+方[方形] -->圆(圆角)
+    圆 --> A{条件a}
+    A -->|a=1| B[结果B]
+    A -->|a=2| C[结果C]
+    F[横向流程图]
+```
+
+```mermaid
+graph TD
+方[方形] -->圆(圆角)
+    圆 --> A{条件a}
+    A -->|a=1| B[结果B]
+    A -->|a=2| C[结果C]
+    F[横向流程图]
+```
+
+
+
+```markdown
+本质上是代码块，不过使用的语言是『mermaid』，详细操作可以查询『mermaid』
+
+\ ```mermaid
+方[方形] -->圆(圆角)
+    圆 --> A{条件a}
+    A -->|a=1| B[结果B]
+    A -->|a=2| C[结果C]
+    F[横向流程图]
+
+\ ```
+
+
+\ ```mermaid
+graph TD
+方[方形] -->圆(圆角)
+    圆 --> A{条件a}
+    A -->|a=1| B[结果B]
+    A -->|a=2| C[结果C]
+    F[横向流程图]
+
+\ ```
+```
+
+
+
+
+
+
+
+
+
+
 
 
 

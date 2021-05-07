@@ -389,7 +389,7 @@ public class Demo_super {
 
 ```
 
-![java-notes-0000](static\pircture\java-notes\java-notes-0000.png)
+![java-notes-0000](static\picture\java-notes\java-notes-0000.png)
 
 ### @Override注解
 
@@ -411,7 +411,7 @@ public class Demo_super {
 
 **注：必须在域的定义处或者每个构造器中表达式对final进行赋值。**
 
-![java-notes-0001.png](static\pircture\java-notes\java-notes-0001.png)
+![java-notes-0001.png](static\picture\java-notes\java-notes-0001.png)
 
 
 

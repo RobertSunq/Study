@@ -163,7 +163,7 @@ Vue.directive('focus', {
 
 #### 生命周期
 
-![vue-notes-0000](static\pircture\vue-notes\vue-notes-0000.png)
+![vue-notes-0000](static\picture\vue-notes\vue-notes-0000.png)
 
 [^引用来源]:图片来自vue官网 "https://cn.vuejs.org/v2/guide/instance.html"
 

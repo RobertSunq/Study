@@ -47,6 +47,8 @@ ORDER BY dm.r1 ASC;
 
 ----
 
+##### windows
+
 1、下载本地安装文件夹。
 
 2、配置系统环境变量为mysql.exe的保存位置	
@@ -94,7 +96,7 @@ default-character-set=utf8mb4
 mysqld  --initialize --console
 ```
 
-![database-notes-mysql-0000](static\pircture\database-notes\database-notes-mysql-0000.png)
+![database-notes-mysql-0000](static\picture\database-notes\database-notes-mysql-0000.png)
 
 ```mysql
 #安装mysql服务
@@ -124,7 +126,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码' PASSWORD EXPIRE NEVER;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码' PASSWORD EXPIRE;
 ```
 
-![database-notes-mysql-0001](static\pircture\database-notes\database-notes-mysql-0001.png)
+![database-notes-mysql-0001](static\picture\database-notes\database-notes-mysql-0001.png)
 
 跳过成功。
 
