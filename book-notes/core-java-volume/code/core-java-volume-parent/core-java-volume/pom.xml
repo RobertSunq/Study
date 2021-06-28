@@ -16,6 +16,12 @@
 
     <artifactId>core-java-volume</artifactId>
 
+    <properties>
+        <mapstruct.version>1.2.0.Final</mapstruct.version>
+        <xxl-job.version>2.2.0</xxl-job.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+    </properties>
+
     <dependencies>
         <!-- springboot整合Web组件 web + actuator-->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
@@ -84,6 +90,34 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
+        </dependency>
+
+        <!-- mapstruct start -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- mapstruct end -->
+
+        <!-- xxl-job start-->
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+            <version>${xxl-job.version}</version>
+        </dependency>
+        <!-- xxl-job end -->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
 

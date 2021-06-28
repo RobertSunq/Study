@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author: sunQB
  * @Date: 2021-04-23 14:47
- * @Since: JDK-
+ * @Since: JDK-1.8
  */
 
 @SpringBootApplication

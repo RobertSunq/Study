@@ -1,0 +1,8 @@
+###################  spring配置  ###################
+spring:
+  application:
+    # 服务名
+    name: core-java-vloume
+  profiles:
+    # 对应bootstrap-{profiles}.yml 文件，可指定多个用,分割
+    active: dev

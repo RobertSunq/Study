@@ -10,8 +10,8 @@ server:
 
 ###################  spring配置  ###################
 spring:
-  application:
-    name: core-java-vloume
+#  application:
+#    name: core-java-vloume
   profiles:
     # 对应application-{profiles}.yml 文件，可指定多个用,分割
     active: dev

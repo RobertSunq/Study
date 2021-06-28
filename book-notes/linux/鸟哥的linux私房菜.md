@@ -12,7 +12,7 @@
 
 使用『--help 』这个选项， 就能够将该指令的用法作一个大致了解
 
-``` markdown
+``` shell
 [qing@study ~]$ date --help
 
 Usage: date [OPTION]... [+FORMAT] # 这里有基本语法
@@ -48,8 +48,8 @@ $ date --date='@2147483647'
 
 man 是manual(操作说明)的简写，使用该指令就可以看到很清楚的说明
 
-```markdown
-[qing@study ~]$ date --help
+```shell
+[qing@study ~]$ man date
 ```
 
 ![0001](static\picture\0001.png)
@@ -107,6 +107,190 @@ info 与man 的用途其实差不多，都是用来查询指令的用法或者�
 
 
 
+#### 超简单文书编辑器：nano
+
+----
+
+nano 的使用其实很简单，直接加上文档名，如果该文档存在，则会打开文档；如果该文档不存在，则会新建该文档并打开。
+
+```shell
+[qing@study ~]$ nano test.txt
+
+```
+
+![0005](static\picture\0005.png)
+
+> 符号『^』代表键盘上的 『Control』键。由于我设置的系统语言是中文，所有这里显示的是中文，英文语言环境下，将显示的是英文说明。
+
+**补充**
+
++ 『Control』+ _ ：直接输入行号，使光标快速移动到该行。
++ 『Control』+ M：开启鼠标移动光标功能。
+
+在编辑后，使用『Control』+ X，之后可以选择是否保存，选择保存后，便进入下面的界面，在这里可以选择修改文件名，以节下面的其他操作。
+
+![0006](static\picture\0006.png)
+
+
+
+>  符号『M』代表键盘上的 『Alt』键。由于我设置的系统语言是中文，所有这里显示的是中文，英文语言环境下，将显示的是英文说明。
+
+
+
+#### 关机注意事项
+
+----
+
+在Linux中，由于每个程序（或者说是服务）都是在其后台执行的，因此，<font color=blue>在看不到的屏幕背后其实可能有相当多的人在同一个注解上面工作的</font>，例如浏览网页，传送信件以FTP传送文件等操作。
+
+除此之外，最大的问题是，<font color=blue>若不正常关机，则可能造文件系统的损坏</font>（因为来不及将数据回写到文件中，所以有些服务的文件会有问题！）。所以在正常关机时需要注意以下几件事：
+
++ <font color=blue>观察系统使用状态</font>
+
+```shell
+# 查看在线用户
+[qing@study ~]$ who
+# 查看网络链接状态
+[qing@study ~]$ netstat -a 
+# 查看后台执行的程序
+[qing@study ~]$ ps -aux
+```
+
+
+
++ <font color=blue>通知在线使用者关机的时刻</font>
+
+> 在主机面前以实体终端机（tty1~tty7）来登入系统时，任何身份都可以关机，但是在使用远程管理工具是，关机就只有root具有权限。
+
+**shutdown可以达到以下的工作**
+
+​			<font color=blue>可以自由选择关机模式：是要关机或重新启动均可；</font>
+
+​			<font color=blue>可以设定关机时间: 可以设定成现在立刻关机, 也可以设定某一个特定的时间才关机。</font>
+
+​			<font color=blue>可以自定义关机讯息：在关机之前，可以将自己设定的讯息传送给在线user 。</font>
+
+​			<font color=blue>可以仅发出警告讯息：有时有可能你要进行一些测试，而不想让其他的使用者干扰，或者是明白的告诉使用者某段时间要注意一下！这个时候可以使用shutdown 来吓一吓使用者，但却不是真的要关机啦！</font>
+
+```shell
+# 使用shutdown的特别指令来达到功能
+[qing@study ~]$ /sbin/shutdown [-krhc] [time] [message]
+################################################################
+# 
+# 选项参数：														 
+# -k		:	不是真的关机，只是发送警告讯息！					 
+# -r		:	将在系统的服务停掉之后就重新启动(常用)				
+# -h		:	将系统的服务停掉后，立即关机。(常用)					 
+# -c		:	取消已经在进行的shutdown指令内容。					
+# time		:	指定系统关机的时间！若没有，则默认一分钟后进行			
+# message	:	警告习提示信息
+# 
+################################################################
+
+# eg. 系统将在十分钟后关机
+[root@study ~]$ /sbin/shutdown -h 10 '将在十分钟后关机'
+
+# 立即关机，其中now相当于时间为 0 的状态
+[root@study ~]$ shutdown -h now
+# 系统将在最近的时刻 20：00 关机。
+[root@study ~]$ shutdown -h 20:00
+# 系统再过十分钟后自动关机
+[root@study ~]$ shutdown -h +10
+# 系统立刻重新启动
+[root@study ~]$ shutdown -r now
+# 再过三十分钟后将会重启，并显示警告讯息
+[root@study ~]$ shutdown -r +30 '将在三十分钟后关机'
+# 仅发出警告信息，但是并不会真正关机。
+[root@study ~]$ shutdown -k now '将立即关机'
+```
+
+
+
++ <font color=blue>正确的关机指令</font>
+  + 将数据同步写入硬盘中的指令：sync
+  + 常用的关机指令：shutdown
+  + 重新启动，关机：reboot，halt，poweroff
+
+```shell
+# 同步更新硬盘数据
+[qing@study ~]$ sync # 个人操作，仅更新自己的。
+[root@study ~]$ sync # root操作，更新整个系统的。
+```
+
+###### 实际中使用 systemctl 关机
+
+```shell
+# 系统管理
+[root@study ~]$ systemctl [指令] 
+################################################################
+# 
+# 指令项目包括如：														 
+# halt			:	进入系统停止的模式，屏幕可能会保留一些讯息，这与电源管理模式有关！					 
+# poweroff		:	进入系统关机模式，直接关机！				
+# reboot		:	直接重新启动。				 
+# suspend		:	进入休眠模式。					
+# 
+################################################################
+
+[root@study ~]# systemctl reboot # 系统重新启动
+[root@study ~]# systemctl poweroff # 系统关机
+
+
+
+
+
+## Linux的文件权限与目录配置
+
+>  基本权限概念：文件所有者、群组、其他人
+
+### Linux 文件权限概念
+
+#### Linux 文件属性
+
+```sh
+[root@study ~]# ls -al # 列出所有的文件详细的权限与属性
+
+drwxrwxrwt.  18 root root 4096 6月   2 17:39 tmp
+```
+
+![0007](static\picture\0007.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -121,5 +305,5 @@ info 与man 的用途其实差不多，都是用来查询指令的用法或者�
 
 [Vmware中安装CentOS7中文教程](https://github.com/Sunqingbao/Study/tree/study-dev/book-notes/linux/document/VMware安装CentOS7.docx "GitHub线上文件")
 
-[Vmware中安装CentOS7英文教程](https://www.tecmint.com/centos-7-installation/)
+[Vmware中安装CentOS7英文教程](https://www.tecmint.com/centos-7-installation/ "tecmint上教程地址")
 

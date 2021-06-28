@@ -1,8 +1,12 @@
+
 /.idea/
-
-
 **/.idea/
-
 **.iml
 
+# 忽略私有笔记
 /private-notes/
+
+# 忽略编译文件
+**/target/
+# 忽略日志文件
+**/logs
