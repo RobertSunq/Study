@@ -4,7 +4,7 @@
 
 ----------
 
-**主要笔记与文件在分支的『study-devi』中**
+**主要笔记与文件在分支的『study-dev』中**
 
 git clone https://github.com/Sunqingbao/Study.git
 
