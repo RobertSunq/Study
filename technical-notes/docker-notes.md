@@ -73,7 +73,7 @@ Docker利用容器技术，独立运行一个或者一组应用，通过镜像�
 #     https://download.docker.com/linux/centos/docker-ce.repo # 默认是国外仓库
     
 [root@centos7 ~]$ yum-config-manager \
-    --add-repo \    
+    --add-repo \
     http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo # 阿里云的镜像地址
     
 # 4、更新yum
@@ -81,6 +81,7 @@ Docker利用容器技术，独立运行一个或者一组应用，通过镜像�
 
 # 5、安装 ce--社区，ee--企业  核心、客户端、容器
 [root@centos7 ~]$ yum install docker-ce docker-ce-cli containerd.io
+# 指定版本 yum install docker-ce--<VERSION_STRING> docker-ce-cli--<VERSION_STRING> containerd.io
 
 # 6、启动
 [root@centos7 ~]$ systemctl start docker
@@ -91,7 +92,8 @@ Docker利用容器技术，独立运行一个或者一组应用，通过镜像�
 
 # 8、查看下载的镜像
 [root@centos7 ~]$ docker images
-
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+hello-world   latest    d1165f221234   4 months ago   13.3kB
 
 
 
@@ -106,6 +108,31 @@ Docker利用容器技术，独立运行一个或者一组应用，通过镜像�
 # 2、删除资源
 [root@centos7 ~]$ rm -rf /var/lib/docker
 [root@centos7 ~]$ rm -rf /var/lib/containerd
+
+# /var/lib/docker docker的默认工作路径
+```
+
+
+
+![0001](static\picture\docker-notes\0001.png)
+
+
+
+> 镜像加速
+
+```shell
+# 以阿里云为列
+[root@centos7 ~]$ mkdir -p /etc/docker # 创建文件
+# 编写配置文件
+[root@centos7 ~]$ tee /etc/docker/daemon.json <<-'EOF'
+{
+	"registry-mirrors":["https://qiyb9988.mirror.aliyuncs.com"]
+}
+EOF
+[root@centos7 ~]$ systemctl daemon-reload # 编译配置文件
+[root@centos7 ~]$ systemctl restart docker # 重启docker
+[root@centos7 ~]$
+
 ```
 
 
