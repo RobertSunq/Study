@@ -235,7 +235,7 @@ nano 的使用其实很简单，直接加上文档名，如果该文档存在，
 [root@study ~]# systemctl reboot # 系统重新启动
 [root@study ~]# systemctl poweroff # 系统关机
 
-
+```
 
 
 
@@ -249,11 +249,13 @@ nano 的使用其实很简单，直接加上文档名，如果该文档存在，
 
 ```sh
 [root@study ~]# ls -al # 列出所有的文件详细的权限与属性
-
 drwxrwxrwt.  18 root root 4096 6月   2 17:39 tmp
+
 ```
 
 ![0007](static\picture\0007.png)
+
+##### 文件类型与权限
 
 
 
